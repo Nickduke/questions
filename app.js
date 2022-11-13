@@ -1,11 +1,26 @@
 //using selectors inside the element method
+const questions = document.querySelectorAll('.question');
 
-// traversing the dom method
-const btns = document.querySelectorAll('.question-btn');
+questions.forEach((question) => {
+  const btn = question.querySelector('.question-btn');
 
-btns.forEach((btn) => {
-  btn.addEventListener('click', (e) => {
-    const question = e.currentTarget.parentElement.parentElement;
+  btn.addEventListener('click', () => {
+    questions.forEach((q) => {
+      if (q !== question) {
+        q.classList.remove('show-text');
+      }
+    });
+
     question.classList.toggle('show-text');
   });
 });
+
+// traversing the dom method
+// const btns = document.querySelectorAll('.question-btn');
+
+// btns.forEach((btn) => {
+//   btn.addEventListener('click', (e) => {
+//     const question = e.currentTarget.parentElement.parentElement;
+//     question.classList.toggle('show-text');
+//   });
+// });
